@@ -8,7 +8,7 @@ namespace MyCalculatorApp.Models.Specials
     public class BackSpace : ISpecial
     {
         /// <inheritdoc/>
-        public string Symbol { get; } = "";
+        public string Symbol { get; } = "←";
 
         /// <inheritdoc/>
         public string Execute(IEvalStatus status)

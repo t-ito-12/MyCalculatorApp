@@ -8,7 +8,7 @@ namespace MyCalculatorApp.Models.Specials
     public class Clear : ISpecial
     {
         /// <inheritdoc/>
-        public string Symbol { get; } = "";
+        public string Symbol { get; } = "C";
 
         /// <inheritdoc/>
         public string Execute(IEvalStatus status)

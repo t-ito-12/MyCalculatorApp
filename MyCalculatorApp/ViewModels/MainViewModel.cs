@@ -1,8 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using log4net;
 using MyCalculatorApp.Models.Evals;
 using MyCalculatorApp.Models.Operators;
 using MyCalculatorApp.Models.Specials;
+using System;
+using System.Diagnostics;
 
 namespace MyCalculatorApp.ViewModels
 {
@@ -11,6 +14,11 @@ namespace MyCalculatorApp.ViewModels
     /// </summary>
     public partial class MainViewModel : ObservableObject
     {
+        /// <summary>
+        /// ロガーインスタンス
+        /// </summary>
+        private ILog Log { get; } = Logger.GetLogger();
+
         /// <summary>
         /// 計算評価モデル
         /// </summary>
@@ -34,6 +42,7 @@ namespace MyCalculatorApp.ViewModels
             {
                 throw new ArgumentNullException(nameof(num));
             }
+            Log.Info($"Input : {num}");
             MainConsoleText = MainConsoleFormat(EvalModel.InputNumber(num));
         }
 
@@ -49,6 +58,7 @@ namespace MyCalculatorApp.ViewModels
             {
                 throw new AbandonedMutexException(nameof(ope));
             }
+            Log.Info($"Input : {ope.Symbol}");
             MainConsoleText = MainConsoleFormat(EvalModel.InputOperator(ope));
         }
 
@@ -64,6 +74,7 @@ namespace MyCalculatorApp.ViewModels
             {
                 throw new ArgumentNullException(nameof(special));
             }
+            Log.Info($"Input : {special.Symbol}");
             MainConsoleText = MainConsoleFormat(EvalModel.InputSpecialOperator(special));
         }
 

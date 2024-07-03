@@ -1,4 +1,5 @@
-﻿using MyCalculatorApp.Models.Operators;
+﻿using log4net;
+using MyCalculatorApp.Models.Operators;
 using MyCalculatorApp.Models.Specials;
 
 namespace MyCalculatorApp.Models.Evals
@@ -8,6 +9,11 @@ namespace MyCalculatorApp.Models.Evals
     /// </summary>
     public class EvalModel : IEvaluable
     {
+        /// <summary>
+        /// ロガーインスタンス
+        /// </summary>
+        private ILog Log { get; } = Logger.GetLogger();
+
         /// <summary>
         /// このクラスの評価状態
         /// </summary>
@@ -74,15 +80,21 @@ namespace MyCalculatorApp.Models.Evals
 
             try
             {
+                Log.Info($"Evaluate : {EvalStatus.Val1} {EvalStatus.Operator.Symbol} {EvalStatus.Val2}");
                 EvalStatus.Val1 = EvalStatus.Operator.Execute(EvalStatus.Val1, EvalStatus.Val2);
+                Log.Info($"Evaluation Results : {EvalStatus.Val1}");
             }
             catch (DivideByZeroException)
             {
-                throw;
+                Log.Info("Error : Cannot be Divided by 0");
+                EvalStatus.Initialize();
+                return "Error";
             }
-            catch (OverflowException)
+            catch (OverflowException ex)
             {
-                throw;
+                Log.Error(ex);
+                EvalStatus.Initialize();
+                return "Error";
             }
             EvalStatus.Operator = ope;
             EvalStatus.Val2 = string.Empty;
@@ -124,15 +136,21 @@ namespace MyCalculatorApp.Models.Evals
 
             try
             {
+                Log.Info($"Evaluate : {EvalStatus.Val1} {EvalStatus.Operator.Symbol} {EvalStatus.Val2}");
                 EvalStatus.Val1 = EvalStatus.Operator.Execute(EvalStatus.Val1, EvalStatus.Val2);
+                Log.Info($"Evaluation Results : {EvalStatus.Val1}");
             }
             catch (DivideByZeroException)
             {
-                throw;
+                Log.Info("Error : Cannot be Divided by 0");
+                EvalStatus.Initialize();
+                return "Error";
             }
-            catch (OverflowException)
+            catch (OverflowException ex)
             {
-                throw;
+                Log.Error(ex);
+                EvalStatus.Initialize();
+                return "Error";
             }
             EvalStatus.EqualExist = true;
             return EvalStatus.Val1;
@@ -144,6 +162,9 @@ namespace MyCalculatorApp.Models.Evals
             return special.Execute(EvalStatus);
         }
 
+        /// <summary>
+        /// <see cref="EvalModel"/>クラスのコンストラクタ
+        /// </summary>
         public EvalModel()
         {
             EvalStatus = new EvalStatus();

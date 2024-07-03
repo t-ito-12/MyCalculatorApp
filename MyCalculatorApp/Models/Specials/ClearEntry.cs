@@ -8,7 +8,7 @@ namespace MyCalculatorApp.Models.Specials
     public class ClearEntry : ISpecial
     {
         /// <inheritdoc/>
-        public string Symbol { get; } = "";
+        public string Symbol { get; } = "CE";
 
         /// <inheritdoc/>
         public string Execute(IEvalStatus status)
