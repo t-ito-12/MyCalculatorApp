@@ -4,8 +4,6 @@ using log4net;
 using MyCalculatorApp.Models.Evals;
 using MyCalculatorApp.Models.Operators;
 using MyCalculatorApp.Models.Specials;
-using System;
-using System.Diagnostics;
 
 namespace MyCalculatorApp.ViewModels
 {
@@ -76,6 +74,7 @@ namespace MyCalculatorApp.ViewModels
             }
             Log.Info($"Input : {special.Symbol}");
             MainConsoleText = MainConsoleFormat(EvalModel.InputSpecialOperator(special));
+            if (string.IsNullOrEmpty(MainConsoleText)) { MainConsoleText = "0"; }
         }
 
         /// <summary>

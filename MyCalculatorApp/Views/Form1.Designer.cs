@@ -35,13 +35,13 @@ namespace MyCalculatorApp.Views
             splitContainer2 = new SplitContainer();
             mainConsole = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
+            specialKey_dot = new SpecialKey();
             specialKey_C = new SpecialKey();
             specialKey_CE = new SpecialKey();
             operatorKey_add = new OperatorKey();
             operatorKey_sub = new OperatorKey();
             operatorKey_mul = new OperatorKey();
             operatorKey_div = new OperatorKey();
-            numKey_0 = new NumKey();
             numKey_7 = new NumKey();
             numKey_8 = new NumKey();
             numKey_9 = new NumKey();
@@ -53,8 +53,8 @@ namespace MyCalculatorApp.Views
             numKey_3 = new NumKey();
             operatorKey_eq = new OperatorKey();
             specialKey_bk = new SpecialKey();
+            numKey_0 = new NumKey();
             specialKey_pm = new SpecialKey();
-            specialKey_dot = new SpecialKey();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -68,6 +68,7 @@ namespace MyCalculatorApp.Views
             // splitContainer1
             // 
             splitContainer1.Dock = DockStyle.Fill;
+            splitContainer1.IsSplitterFixed = true;
             splitContainer1.Location = new Point(0, 0);
             splitContainer1.Name = "splitContainer1";
             splitContainer1.Orientation = Orientation.Horizontal;
@@ -86,9 +87,14 @@ namespace MyCalculatorApp.Views
             // splitContainer2
             // 
             splitContainer2.Dock = DockStyle.Fill;
+            splitContainer2.IsSplitterFixed = true;
             splitContainer2.Location = new Point(0, 0);
             splitContainer2.Name = "splitContainer2";
             splitContainer2.Orientation = Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            splitContainer2.Panel1.CausesValidation = false;
             // 
             // splitContainer2.Panel2
             // 
@@ -146,6 +152,17 @@ namespace MyCalculatorApp.Views
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.Size = new Size(332, 342);
             tableLayoutPanel1.TabIndex = 0;
+            // 
+            // specialKey_dot
+            // 
+            specialKey_dot.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            specialKey_dot.Location = new Point(167, 273);
+            specialKey_dot.Margin = new Padding(1);
+            specialKey_dot.Name = "specialKey_dot";
+            specialKey_dot.Size = new Size(81, 68);
+            specialKey_dot.TabIndex = 24;
+            specialKey_dot.Text = ".";
+            specialKey_dot.UseVisualStyleBackColor = true;
             // 
             // specialKey_C
             // 
@@ -216,17 +233,6 @@ namespace MyCalculatorApp.Views
             operatorKey_div.TabIndex = 16;
             operatorKey_div.Text = "÷";
             operatorKey_div.UseVisualStyleBackColor = false;
-            // 
-            // numKey_0
-            // 
-            numKey_0.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            numKey_0.Location = new Point(84, 273);
-            numKey_0.Margin = new Padding(1);
-            numKey_0.Name = "numKey_0";
-            numKey_0.Size = new Size(81, 68);
-            numKey_0.TabIndex = 11;
-            numKey_0.Text = "0";
-            numKey_0.UseVisualStyleBackColor = true;
             // 
             // numKey_7
             // 
@@ -350,6 +356,17 @@ namespace MyCalculatorApp.Views
             specialKey_bk.Text = "←";
             specialKey_bk.UseVisualStyleBackColor = true;
             // 
+            // numKey_0
+            // 
+            numKey_0.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            numKey_0.Location = new Point(84, 273);
+            numKey_0.Margin = new Padding(1);
+            numKey_0.Name = "numKey_0";
+            numKey_0.Size = new Size(81, 68);
+            numKey_0.TabIndex = 11;
+            numKey_0.Text = "0";
+            numKey_0.UseVisualStyleBackColor = true;
+            // 
             // specialKey_pm
             // 
             specialKey_pm.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
@@ -361,23 +378,14 @@ namespace MyCalculatorApp.Views
             specialKey_pm.Text = "+/-";
             specialKey_pm.UseVisualStyleBackColor = true;
             // 
-            // specialKey_dot
-            // 
-            specialKey_dot.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            specialKey_dot.Location = new Point(167, 273);
-            specialKey_dot.Margin = new Padding(1);
-            specialKey_dot.Name = "specialKey_dot";
-            specialKey_dot.Size = new Size(81, 68);
-            specialKey_dot.TabIndex = 24;
-            specialKey_dot.Text = ".";
-            specialKey_dot.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(334, 461);
             Controls.Add(splitContainer1);
+            MaximumSize = new Size(350, 500);
+            MinimumSize = new Size(350, 500);
             Name = "Form1";
             Text = "Form1";
             splitContainer1.Panel1.ResumeLayout(false);
