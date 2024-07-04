@@ -76,7 +76,6 @@ namespace MyCalculatorApp.Models.Evals
             if (EvalStatus.EqualExist)
             {
                 EvalStatus.Operator = ope;
-                EvalStatus.Val1 = EvalStatus.Val2;
                 EvalStatus.Val2 = string.Empty;
                 EvalStatus.EqualExist = false;
                 return EvalStatus.Val1;
