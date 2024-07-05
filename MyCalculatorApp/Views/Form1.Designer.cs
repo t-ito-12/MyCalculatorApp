@@ -387,7 +387,7 @@ namespace MyCalculatorApp.Views
             MaximumSize = new Size(350, 500);
             MinimumSize = new Size(350, 500);
             Name = "Form1";
-            Text = "Form1";
+            Text = "電卓";
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
