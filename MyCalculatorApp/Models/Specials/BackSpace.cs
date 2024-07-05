@@ -13,6 +13,14 @@ namespace MyCalculatorApp.Models.Specials
         /// <inheritdoc/>
         public string Execute(IEvalStatus status)
         {
+            if (status.EqualExist)
+            {
+                status.TempVal = status.Val1;
+                status.Val1 = string.Empty;
+                status.Val2 = string.Empty;
+                status.Operator = null;
+                return status.TempVal;
+            }
             if (string.IsNullOrEmpty(status.TempVal))
             {
                 if (!string.IsNullOrEmpty(status.Val1)) 

@@ -13,7 +13,6 @@ namespace MyCalculatorApp.Models.Specials
         /// <inheritdoc/>
         public string Execute(IEvalStatus status)
         {
-            //status.TempVal = string.Empty;
             return "0";
         }
     }
