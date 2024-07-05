@@ -14,5 +14,7 @@ C# Windows Forms .NET8.0で作成した電卓アプリです。MVVMパターン�
 ## 使用パッケージ一覧
 - CommunityToolkit.Mvvm 8.2.2: <https://www.nuget.org/packages/CommunityToolkit.Mvvm/8.2.2?_src=template>  
 - log4net 2.0.17: <https://www.nuget.org/packages/log4net/2.0.17?_src=template>
+## 開発環境
+- VisualStudio2022
 ## 動作確認済み環境  
 Windows11  
