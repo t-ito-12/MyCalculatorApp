@@ -164,9 +164,9 @@ namespace MyCalculatorApp.Models.Evals
         /// 式の状態を取得する
         /// </summary>
         /// <returns></returns>
-        public string GetFormula()
+        public IEvalFormula GetFormula()
         {
-            return EvalStatus.Formula;
+            return EvalStatus.EvalFormula;
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace MyCalculatorApp.Models.Evals
         /// </summary>
         private void SetFormula()
         {
-            EvalStatus.Formula = $"{EvalStatus.Val1} {EvalStatus.Operator?.Symbol} {EvalStatus.Val2} {(EvalStatus.EqualExist ? "=" : "")}";
+            EvalStatus.EvalFormula.SetFormula(EvalStatus.Val1, EvalStatus.Val2, EvalStatus.Operator, EvalStatus.EqualExist);
         }
 
         /// <inheritdoc/>

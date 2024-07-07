@@ -64,7 +64,7 @@ namespace MyCalculatorApp.ViewModels
             }
             Log.Info($"Input : {ope.Symbol}");
             MainConsoleText = MainConsoleFormat(EvalModel.InputOperator(ope));
-            SubConsoleText = EvalModel.GetFormula();
+            SubConsoleText = SubConsoleFormat(EvalModel.GetFormula());
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace MyCalculatorApp.ViewModels
             Log.Info($"Input : {special.Symbol}");
             MainConsoleText = MainConsoleFormat(EvalModel.InputSpecialOperator(special));
             if (string.IsNullOrEmpty(MainConsoleText)) { MainConsoleText = "0"; }
-            SubConsoleText = EvalModel.GetFormula();
+            SubConsoleText = SubConsoleFormat(EvalModel.GetFormula());
         }
 
         /// <summary>
@@ -112,6 +112,24 @@ namespace MyCalculatorApp.ViewModels
                 }
             }
             return value;
+        }
+
+        /// <summary>
+        /// サブコンソールのフォーマット
+        /// </summary>
+        /// <param name="formula">評価式の状態</param>
+        /// <returns>フォーマット後の計算式</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <remarks>小数点以下5桁まで表示</remarks>
+        private string SubConsoleFormat(IEvalFormula formula)
+        {
+            if (formula == null)
+            {
+                throw new ArgumentNullException(nameof(formula));
+            }
+            var formatVal1 = MainConsoleFormat(formula.Val1);
+            var formatVal2 = MainConsoleFormat(formula.Val2);
+            return $"{formatVal1} {formula.Operator?.Symbol} {formatVal2} {(formula.EqualExist ? "=" : "")}";
         }
     }
 }

@@ -33,9 +33,9 @@ namespace MyCalculatorApp.Models.Evals
         bool EqualExist { get; set; }
 
         /// <summary>
-        /// 式の状態
+        /// 評価式
         /// </summary>
-        string Formula { get; set; }
+        IEvalFormula EvalFormula { get; }
 
         /// <summary>
         /// 各プロパティを初期化
