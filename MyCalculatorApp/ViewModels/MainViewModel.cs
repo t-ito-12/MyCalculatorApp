@@ -29,6 +29,12 @@ namespace MyCalculatorApp.ViewModels
         public string _mainConsoleText = "0";
 
         /// <summary>
+        /// サブコンソールのテキスト
+        /// </summary>
+        [ObservableProperty]
+        public string _subConsoleText = string.Empty;
+
+        /// <summary>
         /// 数字キー入力コマンド
         /// </summary>
         /// <param name="num"></param>
@@ -58,6 +64,7 @@ namespace MyCalculatorApp.ViewModels
             }
             Log.Info($"Input : {ope.Symbol}");
             MainConsoleText = MainConsoleFormat(EvalModel.InputOperator(ope));
+            SubConsoleText = EvalModel.GetFormula();
         }
 
         /// <summary>
@@ -75,6 +82,7 @@ namespace MyCalculatorApp.ViewModels
             Log.Info($"Input : {special.Symbol}");
             MainConsoleText = MainConsoleFormat(EvalModel.InputSpecialOperator(special));
             if (string.IsNullOrEmpty(MainConsoleText)) { MainConsoleText = "0"; }
+            SubConsoleText = EvalModel.GetFormula();
         }
 
         /// <summary>

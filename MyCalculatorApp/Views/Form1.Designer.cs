@@ -55,11 +55,13 @@ namespace MyCalculatorApp.Views
             specialKey_bk = new SpecialKey();
             numKey_0 = new NumKey();
             specialKey_pm = new SpecialKey();
+            subConsole = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
+            splitContainer2.Panel1.SuspendLayout();
             splitContainer2.Panel2.SuspendLayout();
             splitContainer2.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -95,6 +97,7 @@ namespace MyCalculatorApp.Views
             // splitContainer2.Panel1
             // 
             splitContainer2.Panel1.CausesValidation = false;
+            splitContainer2.Panel1.Controls.Add(subConsole);
             // 
             // splitContainer2.Panel2
             // 
@@ -378,6 +381,16 @@ namespace MyCalculatorApp.Views
             specialKey_pm.Text = "+/-";
             specialKey_pm.UseVisualStyleBackColor = true;
             // 
+            // subConsole
+            // 
+            subConsole.Dock = DockStyle.Fill;
+            subConsole.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            subConsole.Location = new Point(0, 0);
+            subConsole.Name = "subConsole";
+            subConsole.Size = new Size(334, 25);
+            subConsole.TabIndex = 0;
+            subConsole.TextAlign = ContentAlignment.MiddleRight;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -392,6 +405,7 @@ namespace MyCalculatorApp.Views
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
+            splitContainer2.Panel1.ResumeLayout(false);
             splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
@@ -425,5 +439,6 @@ namespace MyCalculatorApp.Views
         private SpecialKey specialKey_bk;
         private SpecialKey specialKey_dot;
         private SpecialKey specialKey_pm;
+        private Label subConsole;
     }
 }
