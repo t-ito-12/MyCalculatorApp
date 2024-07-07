@@ -45,8 +45,6 @@ namespace MyCalculatorApp.Models.Evals
                 return InputEqualOperator();
             }
 
-            EvalStatus.EqualExist = false;
-
             if (string.IsNullOrEmpty(EvalStatus.Val1))
             {
                 EvalStatus.Val1 = string.IsNullOrEmpty(EvalStatus.TempVal) ? "0" : EvalStatus.TempVal;
@@ -63,12 +61,14 @@ namespace MyCalculatorApp.Models.Evals
             {
                 EvalStatus.Operator = ope;
                 SetFormula();
+                EvalStatus.EqualExist = false;
                 return EvalStatus.Val1;
             }
 
             if (EvalStatus.Operator == null)
             {
                 EvalStatus.Operator = ope;
+                EvalStatus.EqualExist = false;
                 EvalStatus.Val1 = EvalStatus.Val2;
                 EvalStatus.Val2 = string.Empty;
                 return EvalStatus.Val1;
@@ -78,6 +78,7 @@ namespace MyCalculatorApp.Models.Evals
             {
                 EvalStatus.Operator = ope;
                 EvalStatus.Val2 = string.Empty;
+                EvalStatus.EqualExist = false;
                 return EvalStatus.Val1;
             }
 
