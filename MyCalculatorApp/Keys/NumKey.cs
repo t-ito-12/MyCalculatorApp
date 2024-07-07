@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace MyCalculatorApp.Keys
+﻿namespace MyCalculatorApp.Keys
 {
+    /// <summary>
+    /// 数字キークラス
+    /// </summary>
     public partial class NumKey : Button
     {
+        /// <summary>
+        /// <see cref="NumKey"/>クラスのコンストラクタ
+        /// </summary>
         public NumKey()
         {
             InitializeComponent();
         }
 
+        /// <inheritdoc/>
         protected override void OnPaint(PaintEventArgs pe)
         {
             base.OnPaint(pe);
