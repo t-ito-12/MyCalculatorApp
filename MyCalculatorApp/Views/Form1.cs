@@ -21,8 +21,11 @@ namespace MyCalculatorApp.Views
         {
             InitializeComponent();
 
-            // コンソール
+            // メインコンソール
             _ = mainConsole.DataBindings.Add(nameof(mainConsole.Text), MainViewModel, nameof(MainViewModel.MainConsoleText));
+
+            // サブコンソール
+            _ = subConsole.DataBindings.Add(nameof(subConsole.Text), MainViewModel, nameof(MainViewModel.SubConsoleText));
 
             // 演算子キー
             // ボタン +

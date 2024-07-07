@@ -33,6 +33,11 @@ namespace MyCalculatorApp.Models.Evals
         bool EqualExist { get; set; }
 
         /// <summary>
+        /// 式の状態
+        /// </summary>
+        string Formula { get; set; }
+
+        /// <summary>
         /// 各プロパティを初期化
         /// </summary>
         void Initialize();

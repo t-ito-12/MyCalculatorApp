@@ -46,6 +46,9 @@ namespace MyCalculatorApp.Models.Evals
         public bool EqualExist { get; set; } = false;
 
         /// <inheritdoc/>
+        public string Formula { get; set; } = string.Empty;
+
+        /// <inheritdoc/>
         public void Initialize()
         {
             Val1 = string.Empty;
@@ -53,6 +56,7 @@ namespace MyCalculatorApp.Models.Evals
             TempVal = string.Empty;
             Operator = null;
             EqualExist = false;
+            Formula = string.Empty;
         }
 
         /// <summary>

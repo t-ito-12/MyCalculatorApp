@@ -45,6 +45,8 @@ namespace MyCalculatorApp.Models.Evals
                 return InputEqualOperator();
             }
 
+            EvalStatus.EqualExist = false;
+
             if (string.IsNullOrEmpty(EvalStatus.Val1))
             {
                 EvalStatus.Val1 = string.IsNullOrEmpty(EvalStatus.TempVal) ? "0" : EvalStatus.TempVal;
@@ -60,14 +62,13 @@ namespace MyCalculatorApp.Models.Evals
             if (string.IsNullOrEmpty(EvalStatus.Val2))
             {
                 EvalStatus.Operator = ope;
-                EvalStatus.EqualExist = false;
+                SetFormula();
                 return EvalStatus.Val1;
             }
 
             if (EvalStatus.Operator == null)
             {
                 EvalStatus.Operator = ope;
-                EvalStatus.EqualExist = false;
                 EvalStatus.Val1 = EvalStatus.Val2;
                 EvalStatus.Val2 = string.Empty;
                 return EvalStatus.Val1;
@@ -77,13 +78,13 @@ namespace MyCalculatorApp.Models.Evals
             {
                 EvalStatus.Operator = ope;
                 EvalStatus.Val2 = string.Empty;
-                EvalStatus.EqualExist = false;
                 return EvalStatus.Val1;
             }
 
             try
             {
                 Log.Info($"Evaluate : {EvalStatus.Val1} {EvalStatus.Operator.Symbol} {EvalStatus.Val2}");
+                SetFormula();
                 EvalStatus.Val1 = EvalStatus.Operator.Execute(EvalStatus.Val1, EvalStatus.Val2);
                 Log.Info($"Evaluation Results : {EvalStatus.Val1}");
             }
@@ -101,7 +102,6 @@ namespace MyCalculatorApp.Models.Evals
             }
             EvalStatus.Operator = ope;
             EvalStatus.Val2 = string.Empty;
-            EvalStatus.EqualExist = false;
             return EvalStatus.Val1;
         }
 
@@ -139,7 +139,9 @@ namespace MyCalculatorApp.Models.Evals
 
             try
             {
+                EvalStatus.EqualExist = true;
                 Log.Info($"Evaluate : {EvalStatus.Val1} {EvalStatus.Operator.Symbol} {EvalStatus.Val2}");
+                SetFormula();
                 EvalStatus.Val1 = EvalStatus.Operator.Execute(EvalStatus.Val1, EvalStatus.Val2);
                 Log.Info($"Evaluation Results : {EvalStatus.Val1}");
             }
@@ -155,8 +157,24 @@ namespace MyCalculatorApp.Models.Evals
                 EvalStatus.Initialize();
                 return "Error";
             }
-            EvalStatus.EqualExist = true;
             return EvalStatus.Val1;
+        }
+
+        /// <summary>
+        /// 式の状態を取得する
+        /// </summary>
+        /// <returns></returns>
+        public string GetFormula()
+        {
+            return EvalStatus.Formula;
+        }
+
+        /// <summary>
+        /// 式の状態を設定する
+        /// </summary>
+        private void SetFormula()
+        {
+            EvalStatus.Formula = $"{EvalStatus.Val1} {EvalStatus.Operator?.Symbol} {EvalStatus.Val2} {(EvalStatus.EqualExist ? "=" : "")}";
         }
 
         /// <inheritdoc/>
